@@ -40,33 +40,62 @@
     </div>
 </form>
 <script>
-var defaultCenter = {
-    lat : <?=get_option('default_lat')?>, 
-    lng : <?=get_option('default_lng')?>
-};
+
+
+
+
+
+    //batas
+
+
 function initMap() {
 
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: <?=get_option('default_zoom')?>,
-    center: defaultCenter 
-  });
+    var defaultCenter = {
+        lat : <?=get_option('default_lat')?>,
+        lng : <?=get_option('default_lng')?>
+    };
 
-  var marker = new google.maps.Marker({
-    position: defaultCenter,
-    map: map,
-    title: 'Click to zoom',
-    draggable:true
-  });
-  
-  
-    marker.addListener('drag', handleEvent);
-    marker.addListener('dragend', handleEvent);
-    
-    var infowindow = new google.maps.InfoWindow({
-        content: '<h4>Drag untuk pindah lokasi</h4>'
-    });
-    
-    infowindow.open(map, marker);
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    getLocation();
+
+    function showPosition(position) {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: <?=get_option('default_zoom')?>,
+                center: {
+                    lat : position.coords.latitude,
+                    // lng : default_lng
+                    lng : position.coords.longitude
+                }
+            });
+
+            var marker = new google.maps.Marker({
+                position: {
+                    lat : position.coords.latitude,
+                    // lng : default_lng
+                    lng : position.coords.longitude
+                },
+                map: map,
+                title: 'Click to zoom',
+                draggable:true
+            });
+
+
+            marker.addListener('drag', handleEvent);
+            marker.addListener('dragend', handleEvent);
+
+            var infowindow = new google.maps.InfoWindow({
+                content: '<h4>Drag untuk pindah lokasi</h4>'
+            });
+
+            infowindow.open(map, marker);
+        }
 }
 
 function handleEvent(event) {
