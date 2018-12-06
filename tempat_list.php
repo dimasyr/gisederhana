@@ -48,6 +48,7 @@ function tampilDekat(){
     }
     getLocation();
     ///batas lama
+
 }  
 
 $(function(){

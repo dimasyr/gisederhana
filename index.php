@@ -62,12 +62,15 @@ include 'functions.php';
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <?php if($_SESSION['login']):?>
-            <li><a href="?m=tempat" class="putih"><span class="glyphicon glyphicon-map-marker"></span> Tempat</a></li>
-            <li><a href="?m=galeri" class="putih"><span class="glyphicon glyphicon-picture"></span> Galeri</a></li>
-            <li><a href="?m=password" class="putih"><span class="glyphicon glyphicon-lock"></span> Password</a></li>
+                <li><a href="?m=tempat_list" class="putih"><span class="glyphicon glyphicon-home"></span> Beranda</a></li>
+            <li><a href="?m=tempat" class="putih"><span class="glyphicon glyphicon-map-marker"></span> Tambah Tempat</a></li>
+            <li><a href="?m=galeri" class="putih"><span class="glyphicon glyphicon-picture"></span> Edit Galeri</a></li>
+            <li><a href="?m=password" class="putih"><span class="glyphicon glyphicon-lock"></span> Ganti Password</a></li>
+          </ul>
+            <ul class="nav navbar-nav navbar-right">
             <li><a href="aksi.php?act=logout" class="putih"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             <?php else:?>            
-            <li><a href="?m=tempat_list" class="putih"><span class="glyphicon glyphicon-map-marker"></span> Masjid</a></li>
+            <li><a href="?m=tempat_list" class="putih"><span class="glyphicon glyphicon-map-marker"></span> Lokasi Masjid</a></li>
             <li><a href="?m=login" class="putih"><span class="glyphicon glyphicon-user"></span> Login</a></li>
             <?php endif?>                   
           </ul>          
