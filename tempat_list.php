@@ -29,13 +29,12 @@ function tampilDekat(){
                 lng : parseFloat(v.lng)
             };
 
-            var foto = <?=json_encode($db->get_results("SELECT * FROM tb_galeri WHERE id_tempat = ?> <?="))?>;
-
-            var contentString = '<h5>'  + v.nama_tempat + '</h5>' + '<br>'+
-                    '<img src="/assets/images/galeri/">' + '<br>'+
-                '<p align="center"><a href="?m=tempat_detail&ID=' + v.id_tempat + '" class="link_detail btn btn-primary">Lihat Detail</a>';
+            var contentString = '<h5 align="center">'  + v.nama_tempat + '</h5>' + '<br>'
+                + '<img style="width: 50%;margin: 0 auto; display: block;" src="assets/images/tempat/'+v.gambar+'">'+'<br>'
+                + '<p align="center"><a href="?m=tempat_detail&ID=' + v.id_tempat + '" class="link_detail btn btn-primary">Lihat Detail</a></p>';
             var infowindow = new google.maps.InfoWindow({
-                content: contentString
+                content: contentString,
+                maxWidth: 300
             });
             var marker = new google.maps.Marker({
                 position: pos,
