@@ -1,31 +1,30 @@
 <?php
     $row = $db->get_row("SELECT * FROM tb_tempat WHERE id_tempat='$_GET[ID]'"); 
 ?>
-<div class="page-header">
+<div style="font-family: 'Roboto', 'sans-serif'; color: #073642">
     <h1>Ubah Tempat</h1>
+    <div style="height: 3px; background-color: #073642; width: max-content; margin: 5px 0px 10px 0px;"></div>
 </div>
 <div class="row">
+    <?php if($_POST) include'aksi.php'?>
+    <form method="post" action="?m=tempat_ubah&ID=<?=$row->id_tempat?>" enctype="multipart/form-data">
     <div class="col-sm-6">
-        <?php if($_POST) include'aksi.php'?>
-        <form method="post" action="?m=tempat_ubah&ID=<?=$row->id_tempat?>" enctype="multipart/form-data">
-            <div class="form-group">
-                <label>Nama Tempat <span class="text-danger">*</span></label>
-                <input class="form-control" type="text" name="nama_tempat" value="<?=$row->nama_tempat?>"/>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Nama Tempat <span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" name="nama_tempat" value="<?=$row->nama_tempat?>"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Gambar <span class="text-danger">*</span></label>
+                        <input class="form-control" type="file" name="gambar" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img class="thumbnail" src="assets/images/tempat/small_<?=$row->gambar?>" style="height: 110px; margin-top: 24px;" />
+                </div>
             </div>
-            <div class="form-group">
-                <label>Gambar <span class="text-danger">*</span></label>
-                <input class="form-control" type="file" name="gambar" />
-                <p class="help-block">Kosongkan jika tidak mengubah gambar</p>
-                <img class="thumbnail" src="assets/images/tempat/small_<?=$row->gambar?>" height="60" />
-            </div>
-            <div class="form-group">
-                <label>Latitude <span class="text-danger">*</span></label>
-                <input class="form-control" type="text" id="lat" name="lat" value="<?=$row->lat?>"/>
-            </div>
-            <div class="form-group">
-                <label>Longitude <span class="text-danger">*</span></label>
-                <input class="form-control" type="text" id="lng" name="lng" value="<?=$row->lng?>"/>
-            </div>
+
             <div class="form-group">
                 <label>Lokasi <span class="text-danger">*</span></label>
                 <input class="form-control" type="text" name="lokasi" value="<?=$row->lokasi?>"/>
@@ -34,15 +33,31 @@
                 <label>Keterangan</label>
                 <textarea class="mce" name="keterangan"><?=$row->keterangan?></textarea>
             </div>
-            <div class="form-group">
-                <button class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Simpan</button>
-                <a class="btn btn-danger" href="?m=tempat"><span class="glyphicon glyphicon-arrow-left"></span> Kembali</a>
-            </div>  
-        </form>
+            <div class="row" style="margin-top: 30px;">
+                <div class="form-group" style="margin-left: 15px;">
+                    <button class="btn" style="background-color: green; color: white;"><span class="glyphicon glyphicon-save"></span> Simpan</button>
+                    <a class="btn btn-warning" href="?m=tempat"><span class="glyphicon glyphicon-arrow-left"></span> Kembali</a>
+                </div>
+            </div>
     </div>
     <div class="col-md-6">
         <div id="map" style="height: 400px;"></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Latitude <span class="text-danger">*</span></label>
+                    <input class="form-control" type="text" id="lat" name="lat" value="<?=$row->lat?>"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Longitude <span class="text-danger">*</span></label>
+                    <input class="form-control" type="text" id="lng" name="lng" value="<?=$row->lng?>"/>
+                </div>
+            </div>
+        </div>
     </div>
+    </form>
 </div>
 <script>
 var defaultCenter = {

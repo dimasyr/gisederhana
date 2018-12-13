@@ -1,13 +1,16 @@
-<div class="page-header">
+<div style="font-family: 'Roboto', 'sans-serif'; color: #073642;">
     <h1>Tempat</h1>
 </div>
-<div class="panel panel-default">
-    <div class="panel-heading">        
+<div style="height: 3px; background-color: #073642; width: max-content; margin: 5px 0px 10px 0px;">
+
+</div>
+    <div class="panel panel-default" style="margin-bottom: 90px;">
+    <div class="panel-heading">
         <form class="form-inline">
             <input type="hidden" name="m" value="tempat" />
             <div class="form-group">
                 <input class="form-control" type="text" placeholder="Pencarian. . ." name="q" value="<?=$_GET['q']?>" />            
-                <button class="btn btn-success"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>            
+                <button class="btn" style="background-color: cornflowerblue;"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
                 <a class="btn btn-primary" href="?m=tempat_tambah"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
             </div>
         </form>
@@ -15,7 +18,7 @@
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-striped">
         <thead>
-            <tr class="nw">
+            <tr class="nww">
                 <th>No</th>
                 <th>Gambar</th>
                 <th>Nama Tempat</th>
@@ -43,8 +46,8 @@
             <td><?=$row->lng?></td>
             <td><?=$row->lokasi?></td>
             <td class="nw">
-                <a class="btn btn-xs btn-warning" href="?m=tempat_ubah&ID=<?=$row->id_tempat?>"><span class="glyphicon glyphicon-edit"></span></a>
-                <a class="btn btn-xs btn-danger" href="aksi.php?act=tempat_hapus&ID=<?=$row->id_tempat?>" onclick="return confirm('Hapus data?')"><span class="glyphicon glyphicon-trash"></span></a>
+                <a class="btn btn-xs" style="background-color: green; color: white;" href="?m=tempat_ubah&ID=<?=$row->id_tempat?>"><span class="glyphicon glyphicon-edit"></span></a>
+                <a class="btn btn-xs btn-warning" href="aksi.php?act=tempat_hapus&ID=<?=$row->id_tempat?>" onclick="return confirm('Hapus data?')"><span class="glyphicon glyphicon-trash"></span></a>
             </td>
         </tr>
         <?php endforeach;    ?>

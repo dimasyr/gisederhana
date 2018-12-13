@@ -1,5 +1,6 @@
-<div class="page-header">
+<div style="font-family: 'Roboto', 'sans-serif'; color: #073642">
     <h1>Galeri</h1>
+    <div style="height: 3px; background-color: #073642; width: max-content; margin: 5px 0px 10px 0px;"></div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">        

@@ -18,14 +18,14 @@
       }
       
       #map {
-        height: 500px;
+        height: 430px;
         float: left;
         width: 63%;
       }
       #right-panel {
         float: right;
         width: 34%;
-        height: 500px;
+        height: 430px;
         overflow: auto;
       }
       .panel {
@@ -38,17 +38,18 @@
 <?php
 $row = $db->get_row("SELECT * FROM tb_tempat WHERE id_tempat='$_GET[ID]'");
 ?>
-<div class="page-header">
+<div style="font-family: 'Roboto', 'sans-serif'; color: #073642">
     <h1>Rute Detail ke <?=$row->nama_tempat?></h1>
+    <div style="height: 3px; background-color: #073642; width: max-content; margin: 5px 0px 10px 0px;"></div>
 </div>
 <div class="clearfix" style="background: white;">
+    <p class="help-block">Geser marker atau garis untuk mengubah rute.</p>
     <div id="map"></div>
     <div id="right-panel">
       <p>Total Jarak: <span id="total"></span><br />
       Node Terdekat: <span id="terdekat"></span></p>
     </div>
 </div>
-<p class="help-block">Geser marker atau garis untuk mengubah rute.</p>
 <script>
 
 $(function(){

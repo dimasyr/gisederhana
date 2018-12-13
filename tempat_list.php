@@ -1,7 +1,5 @@
-<div class="page-header" style="border-bottom-color: dodgerblue; border-bottom-width: medium;">
-    <h1 class="text-info">Tempat Masjid</h1>
+<div id="map" style="height: 450px; margin-top: 10px;">
 </div>
-<div id="map" style="height: 450px;"></div>
 <script>
 function tampilDekat(){
     // var posisi = getCurLocation();

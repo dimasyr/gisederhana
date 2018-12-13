@@ -1,11 +1,24 @@
 <?php
 $row = $db->get_row("SELECT * FROM tb_tempat WHERE id_tempat='$_GET[ID]'");
 ?>
-<div class="page-header">
+<div style="font-family: 'Roboto', 'sans-serif'; color: #073642">
     <h1><?=$row->nama_tempat?></h1>
+    <div style="height: 3px; background-color: #073642; width: max-content; margin: 5px 0px 10px 0px;"></div>
 </div>
 <div class="row">
     <div class="col-md-6">
+        <h3>Galeri</h3>
+        <div class="row">
+            <?php
+            $rows = $db->get_results("SELECT * FROM tb_galeri WHERE id_tempat='$_GET[ID]'");
+            foreach($rows as $r):?>
+                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal"data-title="<?=$r->nama_galeri?>" data-caption="<?=strip_tags($r->ket_galeri)?>" data-image="assets/images/galeri/<?=$r->gambar?>" data-target="#image-gallery">
+                        <img src="assets/images/galeri/small_<?=$r->gambar?>" title="<?=$r->nama_galeri?>" />
+                    </a>
+                </div>
+            <?php endforeach?>
+        </div>
         <p>Lokasi: <?=$row->lokasi?></p>
         <div>
         <?=$row->keterangan?>
@@ -13,23 +26,10 @@ $row = $db->get_row("SELECT * FROM tb_tempat WHERE id_tempat='$_GET[ID]'");
     </div>
     <div class="col-md-6">
         <p>
-            <a href="?m=tempat_list" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-chevron-left"></span> Lihat semua tempat</a>
-            <a href="javascript:void(0)" onclick="showRoute()" class="btn btn-info btn-sm"> <span class="glyphicon glyphicon-search"></span> Tampilkan Rute </a>
-            <a href="?m=detail&ID=<?=$_GET['ID']?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-list"></span> Rute Detail</a>
+            <a href="javascript:void(0)" onclick="showRoute()" class="btn btn-sm" style="background-color: green; color: white;"> <span class="glyphicon glyphicon-search"></span> Tampilkan Rute </a>
+            <a href="?m=detail&ID=<?=$_GET['ID']?>" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-list"></span> Rute Detail</a>
         </p>
-        <div id="map" style="height: 500px;"></div>
-        <h3>Galeri</h3>
-        <div class="row">
-            <?php
-            $rows = $db->get_results("SELECT * FROM tb_galeri WHERE id_tempat='$_GET[ID]'");
-            foreach($rows as $r):?>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal"data-title="<?=$r->nama_galeri?>" data-caption="<?=strip_tags($r->ket_galeri)?>" data-image="assets/images/galeri/<?=$r->gambar?>" data-target="#image-gallery">
-                    <img src="assets/images/galeri/small_<?=$r->gambar?>" title="<?=$r->nama_galeri?>" />
-                </a> 
-            </div>
-        <?php endforeach?>
-        </div>
+        <div id="map" style="height: 450px;"></div>
     </div>
 </div>
 
